@@ -6,10 +6,10 @@ SRC_DIR		= src/
 OBJ_DIR		= obj/
 
 INCLUDES	= -I ./inc
-HEADERS		= 
+HEADERS		= inc/Contact.hpp inc/PhoneBook.hpp
 				
 
-SRCS		= 
+SRCS		= src/main.cpp src/Contact.cpp src/PhoneBook.cpp
 				
 				
 
