@@ -41,7 +41,7 @@ int	main(void)
 		if (input == "ADD")
 			pbook.addContact(i);
 		else if (input == "SEARCH")
-			errorExit("dadasasasas");
+			pbook.showAll();
 	}
 	std::cout << "exiting" << std::endl;
 	return (0);
@@ -59,6 +59,8 @@ void PhoneBook::addContact(size_t &i)
 	_contacts[i].setPhoneNumber(processInput("Phone number: "));
 	_contacts[i].setDarkestSecret(processInput("Darkest secret: "));
 	std::cout << "Contact added" << std::endl;
+	if (_totalContacts != 8)
+		_totalContacts++;
 }
 
 std::string processInput(std::string promt)
@@ -84,4 +86,19 @@ std::string processInput(std::string promt)
 		else
 			return (input);
 	}
+}
+
+void PhoneBook::showAll()
+{
+	if (_totalContacts == 0)
+		std::cout << "Phonebook is empty, add something to it" << std::endl;
+	for (size_t j = 1; j <= _totalContacts; j++)
+	{
+		std::cout << _contacts[j].getFirstName() << std::endl;
+		std::cout << _contacts[j].getLastName() << std::endl;
+		std::cout << _contacts[j].getNickName() << std::endl;
+		std::cout << _contacts[j].getPhoneNumber() << std::endl;
+		std::cout << _contacts[j].getDarkestSecret() << std::endl;
+	}
+	std::cout << std::endl;
 }
