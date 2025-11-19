@@ -1,4 +1,7 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() = default;
+PhoneBook::PhoneBook()
+{
+	_savedContacts = 0;
+}

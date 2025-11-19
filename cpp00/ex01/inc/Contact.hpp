@@ -30,17 +30,6 @@ class Contact
 	std::string getPhoneNumber () const;
 	std::string getDarkestSecret () const;
 
-
-
-	void print() const
-	{
-		std::cout << "First Name    : " << _firstName << std::endl;
-		std::cout << "Last Name     : " << _lastName << std::endl;
-		std::cout << "Nickname      : " << _nickName << std::endl;
-		std::cout << "Phone Number  : " << _phoneNumber << std::endl;
-		std::cout << "Darkest Secret: " << _darkestSecret << std::endl;
-		std::cout << "------------------------" << std::endl;
-	}
 };
 
 #endif

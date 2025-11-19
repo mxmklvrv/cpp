@@ -1,5 +1,6 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include <iomanip>
 #include <iostream>
 
 void	messageWelcome(void)
@@ -52,15 +53,15 @@ int	main(void)
 void PhoneBook::addContact(size_t &i)
 {
 	std::string input;
-	i = (i + 1) % 8;
 	_contacts[i].setFirstName(processInput("First name: "));
 	_contacts[i].setLastName(processInput("Last name: "));
 	_contacts[i].setNickName(processInput("Nick name: "));
 	_contacts[i].setPhoneNumber(processInput("Phone number: "));
 	_contacts[i].setDarkestSecret(processInput("Darkest secret: "));
 	std::cout << "Contact added" << std::endl;
-	if (_totalContacts != 8)
-		_totalContacts++;
+	i = (i + 1) % 3;
+	if (_savedContacts != 3)
+		_savedContacts++;
 }
 
 std::string processInput(std::string promt)
@@ -88,17 +89,32 @@ std::string processInput(std::string promt)
 	}
 }
 
-void PhoneBook::showAll()
+void PhoneBook::showAll(void)
 {
-	if (_totalContacts == 0)
-		std::cout << "Phonebook is empty, add something to it" << std::endl;
-	for (size_t j = 1; j <= _totalContacts; j++)
+	if (_savedContacts == 0)
 	{
-		std::cout << _contacts[j].getFirstName() << std::endl;
-		std::cout << _contacts[j].getLastName() << std::endl;
-		std::cout << _contacts[j].getNickName() << std::endl;
-		std::cout << _contacts[j].getPhoneNumber() << std::endl;
-		std::cout << _contacts[j].getDarkestSecret() << std::endl;
+		std::cout << "Phonebook is empty, add something to it" << std::endl;
+		return ;
+	}
+	std::cout << std::setw(10) << "index" << " | ";
+	std::cout << std::setw(10) << "first name" << " | ";
+	std::cout << std::setw(10) << "last name" << " | ";
+	std::cout << std::setw(10) << "nick name" << " | " << std::endl;
+	std::cout << std::string(51, '+') << std::endl;
+	for (size_t i = 0; i < _savedContacts; i++)
+	{
+		std::cout << std::setw(10) << (i + 1) << " | ";
+		std::cout << std::setw(10) << formatInput(_contacts[i].getFirstName()) << " | ";
+		std::cout << std::setw(10) << formatInput(_contacts[i].getLastName()) << " | ";
+		std::cout << std::setw(10) << formatInput(_contacts[i].getNickName()) << " | ";
+		std::cout << std::endl;
 	}
 	std::cout << std::endl;
+}
+
+std::string PhoneBook::formatInput(std::string data)
+{
+	if(data.length() > 10)
+		data = data.substr(0, 9) + ".";
+	return (data);
 }
