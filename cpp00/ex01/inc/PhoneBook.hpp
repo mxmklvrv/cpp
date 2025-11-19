@@ -5,12 +5,12 @@ class PhoneBook
 {
   private:
 	Contact _contacts[3];
-	size_t _savedContacts;
+	int _savedContacts;
 
   public:
 	PhoneBook();
 
-	void addContact(size_t &i);
+	void addContact(int &i);
 	void showAll();
 	std::string formatInput(std::string data);
 };

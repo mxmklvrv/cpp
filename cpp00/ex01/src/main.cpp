@@ -26,7 +26,7 @@ void	errorExit(std::string message)
 int	main(void)
 {
 	PhoneBook	pbook;
-	size_t		i;
+	int			i;
 
 	std::string input;
 	i = 0;
@@ -50,7 +50,7 @@ int	main(void)
 
 // when add is pressed we should
 // take input, add all data
-void PhoneBook::addContact(size_t &i)
+void PhoneBook::addContact(int &i)
 {
 	std::string input;
 	_contacts[i].setFirstName(processInput("First name: "));
@@ -101,7 +101,7 @@ void PhoneBook::showAll(void)
 	std::cout << std::setw(10) << "last name" << " | ";
 	std::cout << std::setw(10) << "nick name" << " | " << std::endl;
 	std::cout << std::string(51, '+') << std::endl;
-	for (size_t i = 0; i < _savedContacts; i++)
+	for (int i = 0; i < _savedContacts; i++)
 	{
 		std::cout << std::setw(10) << (i + 1) << " | ";
 		std::cout << std::setw(10) << formatInput(_contacts[i].getFirstName()) << " | ";
@@ -110,11 +110,28 @@ void PhoneBook::showAll(void)
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
+	std::string input;
+	while (true)
+	{
+		std::cout << "enter index between (1 - " << _savedContacts << "): ";
+		input = processInput("");
+		if (input.size() != 1 || input[0] < '1' || input[0] > ('0' + _savedContacts))
+			continue ;
+		int id = input[0] - '1';
+		std::cout << std::endl;
+		std::cout << "First name: " <<_contacts[id].getFirstName() << std::endl;
+		std::cout << "Last name: " <<_contacts[id].getLastName() << std::endl;
+		std::cout << "Phone number: " <<_contacts[id].getPhoneNumber() << std::endl;
+		std::cout << "Nick name: " <<_contacts[id].getNickName() << std::endl;
+		std::cout << "Darkest secret: " <<_contacts[id].getDarkestSecret() << std::endl;
+		std::cout << std::endl;
+		break ;
+	}
 }
 
 std::string PhoneBook::formatInput(std::string data)
 {
-	if(data.length() > 10)
+	if (data.length() > 10)
 		data = data.substr(0, 9) + ".";
 	return (data);
 }
