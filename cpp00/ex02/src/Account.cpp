@@ -2,6 +2,9 @@
 #include <iostream>
 
 
+//need to make timestamp function and add it to other functions
+//probably create Account(void) constructor
+
 // static vars
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -22,6 +25,11 @@ int Account::getNbDeposits(void){
 
 int Account::getNbWithdrawals(void){
 	return _totalNbWithdrawals;
+}
+
+
+int Account::checkAmount(void) const{
+	return _amount;
 }
 
 // show full stats of all accs
@@ -55,16 +63,16 @@ Account::~Account(void){
 
 //create deopsit to acc
 void Account::makeDeposit(int deposit){
-	int p_amount = _amount;
-
-	std::cout << "index:" << _accountIndex << ";";
-	std::cout << "p_amount:" << p_amount << ";";
-	std::cout << "deposit:" << deposit << ";";
-	std::cout << "amount:" << (_amount += deposit) << ";";
-	std::cout << "nb_deposits" << ++_nbDeposits << std::endl;
 
 	_totalAmount += deposit;
 	_totalNbDeposits++;
+	_nbDeposits++;
+
+	std::cout << "index:" << _accountIndex << ";";
+	std::cout << "p_amount:" << _amount << ";";
+	std::cout << "deposit:" << deposit << ";";
+	std::cout << "amount:" << (_amount += deposit) << ";";
+	std::cout << "nb_deposits" << _nbDeposits << std::endl;
 }
 
 void Account::displayStatus(void) const{
@@ -74,3 +82,19 @@ void Account::displayStatus(void) const{
 	std::cout << "withdrawls:" << _nbWithdrawals << std::endl;
 }
 
+bool Account::makeWithdrawal(int withdrawal){
+	std::cout << "index:" << _accountIndex << ";";
+	std::cout << "p_amount:" << _amount << ";";
+	if(withdrawal <= _amount){
+		_amount -= withdrawal;
+		_totalAmount -= withdrawal;
+		_nbWithdrawals++;
+		_totalNbWithdrawals++;
+		std::cout << "withdrawal:" << withdrawal << ";";
+		std::cout << "amount:" << _amount << ";";
+		std::cout << "nb_withdrawals:" << _nbWithdrawals << std::endl;
+		return true;
+	}
+	std::cout << "withdrawal:refused" << std::endl;
+	return false;
+}
