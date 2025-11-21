@@ -4,14 +4,14 @@
 class PhoneBook
 {
   private:
-	Contact _contacts[3];
+	Contact _contacts[8];
 	int _savedContacts;
 
   public:
 	PhoneBook();
 
 	void addContact(int &i);
-	void showAll();
+	void searchContact(void);
 	std::string formatInput(std::string data);
 };
 

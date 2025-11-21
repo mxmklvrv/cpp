@@ -36,31 +36,31 @@ int	main(void)
 		messagePromt();
 		if (!std::getline(std::cin, input))
 			if (std::cin.eof())
-				errorExit("eof detected, closing phonebook.");
-		if (std::cin.eof())
-			errorExit("eof detected, closing phonebook.");
+				errorExit("EOF detected, closing phonebook.");
 		if (input == "ADD")
 			pbook.addContact(i);
 		else if (input == "SEARCH")
-			pbook.showAll();
+			pbook.searchContact();
 	}
-	std::cout << "exiting" << std::endl;
+	std::cout << "Closing phonebook." << std::endl;
 	return (0);
 }
 
-// when add is pressed we should
-// take input, add all data
+
 void PhoneBook::addContact(int &i)
 {
 	std::string input;
+
+	std::cout << std::endl;
 	_contacts[i].setFirstName(processInput("First name: "));
 	_contacts[i].setLastName(processInput("Last name: "));
 	_contacts[i].setNickName(processInput("Nick name: "));
 	_contacts[i].setPhoneNumber(processInput("Phone number: "));
 	_contacts[i].setDarkestSecret(processInput("Darkest secret: "));
-	std::cout << "Contact added" << std::endl;
-	i = (i + 1) % 3;
-	if (_savedContacts != 3)
+	std::cout << "Contact added" << std::endl << std::endl;
+
+	i = (i + 1) % 8;
+	if (_savedContacts != 8)
 		_savedContacts++;
 }
 
@@ -72,16 +72,14 @@ std::string processInput(std::string promt)
 		std::cout << promt;
 		if (!std::getline(std::cin, input))
 			if (std::cin.eof())
-				errorExit("eof detected, closing phonebook.");
-		if (std::cin.eof())
-			errorExit("eof detected, closing phonebook.");
+				errorExit("EOF detected, closing phonebook.");
 		input.erase(0, input.find_first_not_of(" \t\n\r\f\v"));
 		input.erase(input.find_last_not_of(" \t\n\r\f\v") + 1);
 		if (input.empty())
 			std::cout << "Input can not be empty, try again" << std::endl;
 		else if (input == "EXIT")
 		{
-			std::cout << "Closing phonebook" << std::endl;
+			std::cout << "Closing phonebook." << std::endl;
 			exit(0);
 		}
 		else
@@ -89,7 +87,7 @@ std::string processInput(std::string promt)
 	}
 }
 
-void PhoneBook::showAll(void)
+void PhoneBook::searchContact(void)
 {
 	if (_savedContacts == 0)
 	{
@@ -111,6 +109,7 @@ void PhoneBook::showAll(void)
 	}
 	std::cout << std::endl;
 	std::string input;
+
 	while (true)
 	{
 		std::cout << "enter index between (1 - " << _savedContacts << "): ";
