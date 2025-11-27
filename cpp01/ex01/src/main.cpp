@@ -1,9 +1,6 @@
 #include "Zombie.hpp"
 
-
-// probably test for mem aloc fail
-
-void test(){
+void walkingDead(){
 	std::cout << std::string(55, '-') << std::endl;
 	std::cout << "Test 1, all valid" << std::endl;
 	int	qty = 5;
@@ -22,7 +19,7 @@ void test(){
 	delete[] orda;
 }
 
-void test1(){
+void walkingDeadTwo(){
 	std::cout << std::string(55, '-') << std::endl;
 	std::cout << "Test 2, qty is 0" << std::endl << std::endl;
 	int	qty = 0;
@@ -47,7 +44,7 @@ void test1(){
 
 }
 
-void test2(){
+void walkingDeadThree(){
 	std::cout << std::string(55, '-') << std::endl;
 	std::cout << "Test 3, qty is -6" << std::endl << std::endl;
 	int	qty = -6;
@@ -74,7 +71,8 @@ void test2(){
 
 int main(void){
 
-	test();
-	test1();
-	test2();
+	walkingDead();
+	walkingDeadTwo();
+	walkingDeadThree();
+	return 0;
 }
