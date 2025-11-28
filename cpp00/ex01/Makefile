@@ -1,19 +1,17 @@
-NAME		= phonebook
-CXX			= c++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++11
+NAME = phonebook
+CXX	 = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11
 
-SRC_DIR		= src/
-OBJ_DIR		= obj/
+SRC_DIR	 = src/
+OBJ_DIR	 = obj/
 
-INCLUDES	= -I ./inc
-HEADERS		= inc/Contact.hpp inc/PhoneBook.hpp
+INCLUDES = -I ./inc
+HEADERS	 = inc/Contact.hpp inc/PhoneBook.hpp
 				
+SRCS = src/main.cpp src/Contact.cpp src/PhoneBook.cpp
+OBJS = $(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 
-SRCS		= src/main.cpp src/Contact.cpp src/PhoneBook.cpp
-				
-				
-
-OBJS		= $(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
+.SECONDARY: $(OBJS)
 
 all: $(NAME)
 

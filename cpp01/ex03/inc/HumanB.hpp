@@ -12,5 +12,4 @@ public:
 	void attack();
 	void setWeapon(Weapon& weapon);
 	~HumanB();
-
 };
