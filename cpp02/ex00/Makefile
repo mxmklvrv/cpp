@@ -1,4 +1,4 @@
-NAME = harl
+NAME = OCF
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++11
@@ -7,9 +7,9 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 INCLUDES = -I ./inc
-HEADERS = inc/
+HEADERS = inc/Fixed.hpp
 
-SRCS = src/main.cpp src/
+SRCS = src/main.cpp src/Fixed.cpp
 OBJS = $(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 .SECONDARY: $(OBJS)
 
