@@ -55,3 +55,32 @@ std::ostream& operator<<(std::ostream& out, const Fixed& value){
 	out << value.toFloat();
 	return out;
 }
+
+Fixed Fixed::operator+(const Fixed& other){
+	Fixed res;
+	res.setRawBits(this->getRawBits() + other.getRawBits());
+	return res;
+}
+
+Fixed Fixed::operator-(const Fixed& other){
+	Fixed res;
+	res.setRawBits(this->getRawBits() - other.getRawBits());
+	return res;
+}
+
+Fixed Fixed::operator*(const Fixed& other){
+	Fixed res;
+	long temp;
+	temp = static_cast<long>(this->getRawBits() * other.getRawBits());
+	res.setRawBits(temp >> _fractionalBits);
+	return res;
+}
+
+Fixed Fixed::operator/(const Fixed& other){
+	Fixed res;
+	long temp;
+	long shift = (static_cast<long>(this->getRawBits())) << _fractionalBits;
+	temp = shift / other.getRawBits();
+	res.setRawBits(temp);
+	return res;
+} 
