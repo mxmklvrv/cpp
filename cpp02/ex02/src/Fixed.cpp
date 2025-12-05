@@ -2,44 +2,32 @@
 #include <iostream>
 #include <cmath>
 
-Fixed::Fixed():_value(0){
-	std::cout << "Default constructor called" << std::endl;
-}
+Fixed::Fixed():_value(0){}
 
-Fixed::~Fixed(){
-	std::cout << "Destructor called" << std::endl;
-}
+Fixed::~Fixed(){}
 
 Fixed::Fixed(const int iNum){
-	std::cout << "Int constructor called" << std::endl;
 	_value = iNum << _fractionalBits;
-	std::cout << "Saved number is: " << this->_value << std::endl;
 }
 
 Fixed::Fixed(const float fNum){
-	std::cout << "Float constructor called"  << std::endl;
 	_value = roundf(fNum * (1 << _fractionalBits));
 }
 
-
-Fixed::Fixed(const Fixed& other) : _value(other.getRawBits()){
-	std::cout << "Copy constructor called" << std::endl;
-}
+Fixed::Fixed(const Fixed& other) : _value(other.getRawBits()){}
 
 Fixed& Fixed::operator=(const Fixed& other){
 	if (this != &other)
 		_value = other.getRawBits();
-	return (*this);
+	return *this;
 }
 
 
 int Fixed::getRawBits(void) const{
-	std::cout << "getRawBits member function called" << std::endl;
-	return (_value);
+	return _value;
 }
 
 void Fixed::setRawBits(int const raw){
-	std::cout << "setRawBits member function called" << std::endl;
 	_value = raw;
 }
 
@@ -56,31 +44,60 @@ std::ostream& operator<<(std::ostream& out, const Fixed& value){
 	return out;
 }
 
-Fixed Fixed::operator+(const Fixed& other){
+Fixed Fixed::operator+(const Fixed& other) const{
 	Fixed res;
-	res.setRawBits(this->getRawBits() + other.getRawBits());
+	res.setRawBits(this->_value + other._value);
 	return res;
 }
 
-Fixed Fixed::operator-(const Fixed& other){
+Fixed Fixed::operator-(const Fixed& other) const{
 	Fixed res;
-	res.setRawBits(this->getRawBits() - other.getRawBits());
+	res.setRawBits(this->_value - other._value);
 	return res;
 }
 
-Fixed Fixed::operator*(const Fixed& other){
+Fixed Fixed::operator*(const Fixed& other) const{
 	Fixed res;
 	long temp;
-	temp = static_cast<long>(this->getRawBits() * other.getRawBits());
+	temp = static_cast<long>(this->_value) * static_cast<long>(other._value);
 	res.setRawBits(temp >> _fractionalBits);
 	return res;
 }
 
-Fixed Fixed::operator/(const Fixed& other){
+Fixed Fixed::operator/(const Fixed& other) const{
+	if(other._value == 0){
+		std::cout << "impossible to divide by zero" << std::endl;
+		return Fixed(0);
+	} 
 	Fixed res;
 	long temp;
-	long shift = (static_cast<long>(this->getRawBits())) << _fractionalBits;
-	temp = shift / other.getRawBits();
-	res.setRawBits(temp);
+	long shift = (static_cast<long>(this->_value)) << _fractionalBits;
+	temp = shift / other._value;
+	res.setRawBits(static_cast<int>(temp));
 	return res;
 } 
+
+bool Fixed::operator>(const Fixed &other) const{
+	return this->_value > other._value;
+}
+
+bool Fixed::operator<(const Fixed &other) const{
+	return this->_value < other._value;
+}
+
+bool Fixed::operator>=(const Fixed &other) const{
+	return this->_value >= other._value;
+}
+
+bool Fixed::operator<=(const Fixed &other) const{
+	return this->_value <= other._value;
+}
+
+bool Fixed::operator==(const Fixed &other) const{
+	return this->_value == other._value;
+}
+
+bool Fixed::operator!=(const Fixed &other) const{
+	return this->_value != other._value;
+}
+
