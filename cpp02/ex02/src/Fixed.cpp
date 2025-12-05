@@ -101,3 +101,42 @@ bool Fixed::operator!=(const Fixed &other) const{
 	return this->_value != other._value;
 }
 
+Fixed& Fixed::operator++(void){
+	this->_value++;
+	return *this;
+}
+
+Fixed Fixed::operator++(int){
+	Fixed old;
+	old = *this;
+	++(*this);
+	return old;
+}
+
+Fixed& Fixed::operator--(void){
+	this->_value--;
+	return *this;
+}
+
+Fixed Fixed::operator--(int){
+	Fixed old;
+	old = *this;
+	--(*this);
+	return old;
+}
+
+Fixed& Fixed::min(Fixed& a, Fixed& b){
+	return a._value < b._value ? a : b; 
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b){
+	return a._value < b._value ? a : b;
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b){
+	return a._value > b._value ? a : b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b){
+	return a._value > b._value ? a : b;
+}
