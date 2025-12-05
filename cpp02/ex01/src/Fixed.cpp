@@ -13,12 +13,13 @@ Fixed::~Fixed(){
 Fixed::Fixed(const int iNum){
 	std::cout << "Int constructor called" << std::endl;
 	_value = iNum << _fractionalBits;
-	std::cout << "Saved number is: " << this->_value << std::endl;
+	std::cout << "Saved number is: " << _value << std::endl;
 }
 
 Fixed::Fixed(const float fNum){
 	std::cout << "Float constructor called"  << std::endl;
 	_value = roundf(fNum * (1 << _fractionalBits));
+	std::cout << "Saved number is: " << _value << std::endl;
 }
 
 
