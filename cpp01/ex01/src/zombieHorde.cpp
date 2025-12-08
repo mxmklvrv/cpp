@@ -2,7 +2,7 @@
 
 Zombie* zombieHorde(int N, std::string name){
 	if(N <= 0)
-		throw std::invalid_argument("Horde size should be more than 0");
+		throw std::invalid_argument("Horde size should be more than 0 and positive.");
 	try
 	{
 		Zombie *horde = new Zombie[N];

@@ -1,4 +1,4 @@
-NAME = zombie
+NAME = moarBrainz
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++11
