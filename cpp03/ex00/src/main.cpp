@@ -23,10 +23,4 @@ int main(void){
 	Saturn.takeDamage(11);
 	Saturn.attack("Venus");
 	std::cout << std::endl;
-
-
-
-	 
-	
-
 }

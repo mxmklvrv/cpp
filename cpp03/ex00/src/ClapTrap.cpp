@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(const std::string& name)
 		_mana(10),
 		_dps(0)
 {
-	std::cout << "Constructor with name as an arg called." << std::endl;
+	std::cout << "Constructor with name as an arg " << _name << " called." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
@@ -27,22 +27,23 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 		_mana(other._mana),
 		_dps(other._dps)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor of " << _name <<  " called" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other){
-	std::cout << "Assignment constructor called" << std::endl;
 	if (this != &other){
 		_name = other._name;
 		_hp = other._hp;
 		_mana = other._mana;
 		_dps = other._dps;
+		std::cout << "Assignment constructor called." << _name;
+		std::cout << "copy of " << other._name << std::endl;
 	}
 	return *this;
 }
 
 ClapTrap::~ClapTrap(){
-	std::cout << "Default distructor called." << std::endl; 
+	std::cout << "Default distructor called on " << _name << std::endl; 
 }
 
 void ClapTrap::attack(const std::string &target){
