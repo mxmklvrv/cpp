@@ -7,7 +7,7 @@ ClapTrap::ClapTrap(void)
 		_mana(10),
 		_dps(0)
 {
-	std::cout << "ClapTrap efault constructor called." << std::endl;
+	std::cout << "ClapTrap default constructor called." << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name)
@@ -43,7 +43,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other){
 }
 
 ClapTrap::~ClapTrap(){
-	std::cout << "ClapTrap default distructor called on " << _name << std::endl; 
+	std::cout << "ClapTrap default destructor called on " << _name << std::endl; 
 }
 
 void ClapTrap::attack(const std::string &target){
@@ -59,6 +59,10 @@ void ClapTrap::attack(const std::string &target){
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
+	if(_hp == 0){
+		std::cout << "ClapTrap " << _name << " already dead." << std::endl;
+		return;
+	}
 	_hp = _hp >= amount ? _hp - amount : 0;
 	std::cout <<"ClapTrap " <<_name << " takes " << amount << " damage" << std::endl;
 }
@@ -72,5 +76,6 @@ void ClapTrap::beRepaired(unsigned int amount){
 		_mana--;
 		_hp += amount;
 		std::cout << _name << " got a healing salve and regenerates " << amount << "hp." << std::endl;
+		std::cout << "Current health is " << _hp << std::endl;
 	}
 }

@@ -12,7 +12,7 @@ ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name){
 	_hp = 100;
 	_mana = 50;
 	_dps = 20;
-	std::cout << "ScavTrav constructor with " << _name << " as an arg called" << std::endl;
+	std::cout << "ScavTrap constructor with " << _name << " as an arg called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other){
@@ -28,17 +28,28 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other){
 
 }
 ScavTrap::~ScavTrap(){
-	std::cout << "ScavTrap distructor called on " << _name << std::endl;
+	std::cout << "ScavTrap destructor called on " << _name << std::endl;
 }
 
 void ScavTrap::attack(const std::string& target){
 	if(_hp == 0)
-		std::cout << "ScavTrap  " << _name << " is dead and cannot attack anymore" << std::endl;
+		std::cout << "ScavTrap " << _name << " is dead and cannot attack anymore" << std::endl;
 	else if(_mana == 0)
 		std::cout << "ScavTrap " << _name << " has no energy points and cannot attack anymore" << std::endl;
 	else{
 		_mana--;
-		std::cout <<" ScavTrap "<<_name << " brutally attacks " << target;
+		std::cout <<" ScavTrap "<< _name << " brutally attacks " << target;
 		std::cout << " and dealing " << _dps << " damage." << std::endl;
+	}
+}
+
+void ScavTrap::guardGate(void){
+	if(_hp == 0)
+		std::cout << "ScavTrap " << _name << " is dead and cannot switch to Gate keeper mode." << std::endl;
+	else if(_mana == 0)
+		std::cout << "ScavTrap " << _name << " has no energy points and cannot switch to Gate keeper mode." <<  std::endl;
+	else{
+		_mana--;
+		std::cout << "ScavTrap " << _name << " is in Gate keeper mode." << std::endl;
 	}
 }
