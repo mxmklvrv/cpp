@@ -1,4 +1,4 @@
-NAME = ClapTrap
+NAME = DiamondTrap
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++11
@@ -7,9 +7,9 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 INCLUDES = -I ./inc
-HEADERS = inc/ClapTrap.hpp
+HEADERS = inc/ClapTrap.hpp inc/ScavTrap.hpp inc/FragTrap.hpp inc/DiamondTrap.hpp
 
-SRCS = src/main.cpp src/ClapTrap.cpp
+SRCS = src/main.cpp src/ClapTrap.cpp src/ScavTrap.cpp src/FragTrap.cpp src/DiamondTrap.cpp
 OBJS = $(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 .SECONDARY: $(OBJS)
 

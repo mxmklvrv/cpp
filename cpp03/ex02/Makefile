@@ -1,4 +1,4 @@
-NAME = repetitiveWork
+NAME = FragTrap
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++11
