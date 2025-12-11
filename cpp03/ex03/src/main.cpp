@@ -1,61 +1,53 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-
-int main(void){
-	std::cout << std::endl;
-	std::cout << std::string(50,'+') << std::endl;
-	std::cout << "Basic constructor tests" << std::endl;
-	std::cout << std::endl;
-	FragTrap Earth;
-	FragTrap Neptun("Neptun");
-	FragTrap Jupiter(Earth);
-	FragTrap Venus;
-	Venus = Neptun;
-	FragTrap Mars("Mars");
-
-	std::cout << std::endl;
-	std::cout << std::string(50,'+') << std::endl;
-	std::cout << "Atack test" << std::endl;
-	std::cout << std::endl;
-	for(int j = 0; j < 101; j++)
-		Neptun.attack("Venus");
-
-	std::cout << std::endl;
-	std::cout << std::string(50,'+') << std::endl;
-	std::cout << "Repair test" << std::endl;
-	std::cout << std::endl;
-	Neptun.beRepaired(10);
-	Mars.beRepaired(10);
-	Mars.beRepaired(25);
-
-	std::cout << std::endl;
-	std::cout << std::string(50,'+') << std::endl;
-	std::cout << "High-five test" << std::endl;
-	std::cout << std::endl;
-	Mars.highFivesGuys();
-	Neptun.highFivesGuys();
-	std::cout << std::endl;
-
-	std::cout << std::endl;
-	std::cout << std::string(50,'+') << std::endl;
-	std::cout << "Damage test" << std::endl;
-	std::cout << std::endl;
-
-	Mars.takeDamage(50);
-	Mars.takeDamage(100);
-	Mars.takeDamage(25);
-
-	std::cout << std::endl;
-	std::cout << std::string(50,'+') << std::endl;
-	std::cout << "After death test" << std::endl;
-
-	Mars.beRepaired(20);
-	Mars.highFivesGuys();
-	Mars.attack("Maxim");
+#include "DiamondTrap.hpp"
 
 
-	std::cout << std::string(50,'+') << std::endl;
-	std::cout << "END" << std::endl;
-	std::cout << std::endl;
+int main()
+{
+    std::cout << std::string(50, '+') << std::endl;
+    std::cout << "BASIC CONSTRUCTOR TESTS" << std::endl;
+    std::cout << std::string(50, '+') << std::endl;
+
+    // Default constructor
+    DiamondTrap dt1;
+
+    // Parameterized constructor
+    DiamondTrap dt2("Neptun");
+
+    // Copy constructor
+    DiamondTrap dt3(dt1);
+
+    // Assignment operator
+    DiamondTrap dt4;
+    dt4 = dt2;
+
+    // WhoAmI test
+    DiamondTrap dt5("Mars");
+    dt5.whoAmI();
+
+    std::cout << std::string(50, '+') << std::endl;
+    std::cout << "ATTACK / SPECIAL ABILITIES TESTS" << std::endl;
+
+    // Attack
+    dt2.attack("enemy1");
+
+    // ScavTrap guardGate()
+    dt2.guardGate();
+
+    // FragTrap highFivesGuys()
+    dt2.highFivesGuys();
+
+    std::cout << std::string(50, '+') << std::endl;
+    std::cout << "DAMAGE / REPAIR TESTS" << std::endl;
+
+    dt2.takeDamage(20);
+    dt2.beRepaired(15);
+
+    std::cout << std::string(50, '+') << std::endl;
+    std::cout << "END OF TESTS - DESTRUCTORS WILL NOW RUN" << std::endl;
+    std::cout << std::string(50, '+') << std::endl;
+
+    return 0;
 }

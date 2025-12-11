@@ -4,7 +4,7 @@ FragTrap::FragTrap(void) : ClapTrap(){
 	_hp = 100;
 	_mana = 100;
 	_dps = 30;
-	std::cout << "FragTrap default constructor called" << std::endl;
+	std::cout << "FragTrap default constructor called name: " << _name << std::endl;
 }
 
 FragTrap::FragTrap(const std::string& name) : ClapTrap(name){

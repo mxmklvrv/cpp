@@ -7,7 +7,7 @@ ClapTrap::ClapTrap(void)
 		_mana(10),
 		_dps(0)
 {
-	std::cout << "ClapTrap default constructor called." << std::endl;
+	std::cout << "ClapTrap default constructor called name: " << _name << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name)
