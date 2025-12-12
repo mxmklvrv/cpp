@@ -19,5 +19,5 @@ Fixed Point::getY(void) const{
 }
 
 Fixed Point::area(const Point& a, const Point& b, const Point& c){
-	return (b.getX() - a.getX()) * (c.getY() - a.getY()) - (b.getY() -a.getY()) * (c.getX() - a.getX()):
+	return (b.getX() - a.getX()) * (c.getY() - a.getY()) - (b.getY() -a.getY()) * (c.getX() - a.getX());
 }
