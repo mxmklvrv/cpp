@@ -101,7 +101,7 @@ bool Fixed::operator==(const Fixed &other) const{
 bool Fixed::operator!=(const Fixed &other) const{
 	return this->_value != other._value;
 }
-
+// pre-inc
 Fixed& Fixed::operator++(void){
 	this->_value++;
 	return *this;
@@ -115,7 +115,6 @@ Fixed Fixed::operator++(int){
 	return old;
 }
 
-// pre-inc
 Fixed& Fixed::operator--(void){
 	this->_value--;
 	return *this;
