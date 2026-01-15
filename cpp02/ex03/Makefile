@@ -1,4 +1,4 @@
-NAME = fpnc
+NAME = bsp
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++11
@@ -9,7 +9,7 @@ OBJ_DIR = obj/
 INCLUDES = -I ./inc
 HEADERS = inc/Fixed.hpp inc/Point.hpp
 
-SRCS = src/main.cpp src/Fixed.cpp src/Point.cpp
+SRCS = src/main.cpp src/Fixed.cpp src/Point.cpp src/bsp.cpp
 OBJS = $(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 .SECONDARY: $(OBJS)
 

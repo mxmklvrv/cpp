@@ -115,12 +115,10 @@ Fixed Fixed::operator++(int){
 	return old;
 }
 
-
 Fixed& Fixed::operator--(void){
 	this->_value--;
 	return *this;
 }
-
 
 Fixed Fixed::operator--(int){
 	Fixed old;

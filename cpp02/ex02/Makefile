@@ -1,4 +1,4 @@
-NAME = fpnc
+NAME = talking
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++11

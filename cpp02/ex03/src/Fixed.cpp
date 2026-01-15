@@ -8,7 +8,6 @@ Fixed::~Fixed(){}
 
 Fixed::Fixed(const int iNum){
 	_value = iNum << _fractionalBits;
-	std::cout << "Saved num is: "<< _value << std::endl; 
 }
 
 Fixed::Fixed(const float fNum){
