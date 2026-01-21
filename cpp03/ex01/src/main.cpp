@@ -45,6 +45,12 @@ int main(void){
 	Mars.takeDamage(25);
 
 	std::cout << std::string(50,'+') << std::endl;
+	std::cout << " Some more tests" << std::endl;
+	ClapTrap* bot = new ScavTrap("Max");
+	bot->attack("enemy");
+	delete bot;
+
+
 	std::cout << "END" << std::endl;
 	std::cout << std::endl;
 }
