@@ -1,9 +1,7 @@
 #pragma once
 #include "ClapTrap.hpp"
 
-#define SCAV_MANA 50
-
-class ScavTrap : virtual public ClapTrap
+class ScavTrap : virtual public ClapTrap 
 {
 public:
 	ScavTrap(void);
