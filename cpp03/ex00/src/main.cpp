@@ -3,15 +3,15 @@
 int main(void){
 	std::cout << "Basic constructor tests" << std::endl;
 	ClapTrap Mars;
-	ClapTrap Venus("Venus");
+	ClapTrap Venus("Max");
 	ClapTrap Earth(Venus);
 	Mars = Venus;
-	ClapTrap Uranus("Uranus");
-	ClapTrap Saturn("Saturn");
+	ClapTrap Uranus("Bob");
+	ClapTrap Saturn("Ignat");
 	std::cout << std::endl;
 	std::cout << "Subject tests" << std::endl;
 	for(int i = 0; i < 11; i++)
-		Venus.attack("Uranus");
+		Venus.attack("Texas");
 	std::cout << std::endl;
 	Saturn.takeDamage(1);
 	Saturn.takeDamage(5);
@@ -21,6 +21,6 @@ int main(void){
 	Saturn.beRepaired(0);
 	Saturn.beRepaired(6);
 	Saturn.takeDamage(11);
-	Saturn.attack("Venus");
+	Saturn.attack("Max");
 	std::cout << std::endl;
 }

@@ -60,7 +60,8 @@ void ClapTrap::attack(const std::string &target){
 
 void ClapTrap::takeDamage(unsigned int amount){
 	_hp = _hp >= amount ? _hp - amount : 0;
-	std::cout << _name << " takes " << amount << " damage" << std::endl;
+	std::cout << _name << " takes " << amount << " damage";
+	std::cout << " Current hp is: " << _hp  << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
@@ -71,6 +72,7 @@ void ClapTrap::beRepaired(unsigned int amount){
 	else{
 		_mana--;
 		_hp += amount;
-		std::cout << _name << " got a healing salve and regenerates " << amount << "hp." << std::endl;
+		std::cout << _name << " got a healing salve and regenerates " << amount << "hp.";
+		std::cout << " Current hp is: " << _hp  << std::endl;
 	}
 }
